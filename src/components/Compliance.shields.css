@@ -1,0 +1,81 @@
+.cp {
+  --ink: #1c1410;
+  --light: #eceae6;
+  --muted: #6f6861;
+  --hair: rgba(28, 20, 16, 0.14);
+  --accent: #f26531;
+  background: var(--light);
+  color: var(--ink);
+  padding: clamp(72px, 11vh, 140px) clamp(20px, 4.5vw, 80px);
+  font-family: var(--font, 'Plus Jakarta Sans', 'Segoe UI', sans-serif);
+}
+.cp-inner { width: min(100%, 1480px); margin: 0 auto; }
+
+.cp-top { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px 7vw; align-items: start; }
+.cp-left { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+.cp-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
+.cp-eyebrow svg { width: 18px; height: 18px; color: var(--accent); }
+.cp-left h2 { margin: 0; font-size: clamp(34px, 4.6vw, 72px); line-height: 1.02; font-weight: 600; letter-spacing: -0.045em; max-width: 14ch; }
+.cp-left p { margin: 0; max-width: 460px; font-size: clamp(15px, 1.15vw, 18px); line-height: 1.6; color: var(--muted); }
+.cp-btn {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 6px; padding: 14px 26px; border-radius: 999px;
+  background: var(--ink); color: #fff; text-decoration: none; font-size: 14px; font-weight: 700;
+  transition: background 0.3s ease;
+}
+.cp-btn i { font-style: normal; display: inline-block; transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+.cp-btn:hover { background: var(--accent); }
+.cp-btn:hover i, .cp-btn:focus-visible i { transform: translate(3px, -3px); }
+.cp-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.cp-feats { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--hair); }
+.cp-feat { display: flex; gap: 20px; align-items: flex-start; padding: 26px 0; border-bottom: 1px solid var(--hair); }
+.cp-ico {
+  flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
+  width: 46px; height: 46px; border-radius: 14px; background: #fff; box-shadow: 0 0 0 1px var(--hair);
+}
+.cp-ico svg { width: 22px; height: 22px; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.cp-feat h3 { margin: 2px 0 6px; font-size: clamp(18px, 1.5vw, 22px); font-weight: 650; letter-spacing: -0.02em; }
+.cp-feat p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); max-width: 40ch; }
+
+/* ---------- badge panel ---------- */
+.cp-panel {
+  position: relative; overflow: hidden; margin-top: clamp(48px, 8vh, 96px);
+  border-radius: 32px; background: #070b14; isolation: isolate;
+  padding: clamp(40px, 6vh, 72px) clamp(20px, 3vw, 56px) clamp(28px, 4vh, 44px);
+}
+.cp-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; max-width: none; object-fit: cover; opacity: 0.9; }
+.cp-panel::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(7, 11, 20, 0.55), rgba(7, 11, 20, 0.78));
+}
+.cp-badges {
+  list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 28px); justify-items: center;
+}
+.cp-badge {
+  position: relative; width: 100%; max-width: 190px; aspect-ratio: 120 / 140;
+  translate: 0 0; transition: translate 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cp-badge:hover { translate: 0 -8px; }
+.cp-shield { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.4)); }
+.cp-shield path:first-child { fill: rgba(255, 255, 255, 0.12); stroke: rgba(255, 255, 255, 0.4); stroke-width: 1.4; }
+.cp-shield .cp-shine { fill: rgba(255, 255, 255, 0.1); }
+.cp-bl { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; padding: 0 12%; color: #fff; }
+.cp-check { width: 22px; height: 22px; padding: 5px; box-sizing: content-box; border-radius: 50%; background: var(--accent); fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 4px; }
+.cp-bl b { font-size: clamp(14px, 1.25vw, 19px); font-weight: 750; letter-spacing: -0.02em; line-height: 1.1; }
+.cp-bl em { font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #ffb59a; }
+.cp-cap { margin: clamp(24px, 4vh, 40px) 0 0; text-align: center; font-size: clamp(14px, 1.1vw, 17px); color: rgba(255, 255, 255, 0.82); }
+
+@media (max-width: 1099px) {
+  .cp-top { grid-template-columns: 1fr; }
+  .cp-badges { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 28px; }
+  .cp-badge { max-width: 170px; }
+}
+@media (max-width: 599px) {
+  .cp-badges { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cp-panel { border-radius: 24px; }
+  .cp-feat { padding: 20px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cp-badge, .cp-btn i { transition: none; }
+}

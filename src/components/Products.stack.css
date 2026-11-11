@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.pst {
+  --bg: #eceae6;
+  --ink: #1c1410;
+  --accent: #f26531;
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font, 'Plus Jakarta Sans', 'Segoe UI', sans-serif);
+}
+
+/* ---------- top bar ---------- */
+.pst-top {
+  position: absolute; z-index: 5; top: clamp(20px, 4vh, 44px); left: clamp(20px, 4.5vw, 72px); right: clamp(20px, 4.5vw, 72px);
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 24px;
+}
+.pst-head { display: flex; flex-direction: column; gap: 12px; max-width: 320px; }
+.pst-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.pst-eyebrow svg { width: 18px; height: 18px; color: var(--accent); }
+.pst-head p { margin: 0; font-size: 12.5px; line-height: 1.55; color: rgba(28, 20, 16, 0.58); }
+.pst-count {
+  font-size: 12px; font-weight: 800; letter-spacing: 0.16em; font-variant-numeric: tabular-nums;
+}
+
+/* ---------- marquee ---------- */
+.pst-marq { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.pst-row { position: absolute; left: 0; width: 100%; overflow: hidden; }
+.pst-mtrack { display: flex; width: max-content; will-change: transform; }
+.pst-mtrack span {
+  flex: 0 0 auto; white-space: pre;
+  font-family: 'Bebas Neue', 'Oswald', Impact, 'Arial Narrow', sans-serif;
+  text-transform: uppercase; line-height: 0.86; letter-spacing: 0.01em;
+}
+.pst-row-a { top: 50%; transform: translateY(-50%); }
+.pst-row-a .pst-mtrack span { font-size: clamp(180px, 40vh, 420px); color: var(--accent); }
+.pst-row-b { bottom: 3vh; }
+.pst-row-b .pst-mtrack span {
+  font-size: clamp(60px, 13vh, 150px);
+  color: transparent; -webkit-text-stroke: 1.4px rgba(28, 20, 16, 0.2);
+}
+
+/* ---------- stage + cards ---------- */
+.pst-stage {
+  position: absolute; z-index: 3; left: 50%; top: 50%;
+  width: min(380px, 86vw); height: min(480px, 64vh);
+  transform: translate(-50%, -50%);
+}
+.pst-glow {
+  position: absolute; left: 50%; top: 50%; width: 150%; height: 130%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(242, 101, 49, 0.38), rgba(242, 101, 49, 0) 70%);
+  filter: blur(30px); pointer-events: none; z-index: -1;
+}
+.pst-card {
+  position: absolute; inset: 0; border-radius: 24px; background: #fff;
+  box-shadow: 0 1px 2px rgba(28, 20, 16, 0.08), 0 8px 18px -6px rgba(28, 20, 16, 0.14), 0 34px 60px -24px rgba(28, 20, 16, 0.38);
+  will-change: transform, opacity; pointer-events: none;
+}
+.pst-card.is-front { pointer-events: auto; }
+.pst-in {
+  position: absolute; inset: 0; display: flex; flex-direction: column; gap: 6px;
+  padding: 14px; box-sizing: border-box; border-radius: 24px;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pst-card.is-front:hover .pst-in { transform: translateY(-6px); }
+
+.pst-shot {
+  flex: 1 1 0; min-height: 90px; border-radius: 16px; overflow: hidden; margin-bottom: 6px;
+  display: flex; align-items: center; justify-content: center; padding: 22px;
+  background: radial-gradient(circle at 50% 40%, rgba(242, 101, 49, 0.1), rgba(242, 101, 49, 0) 70%), #f6f4f1;
+  box-shadow: inset 0 0 0 1px rgba(28, 20, 16, 0.06);
+}
+.pst-shot img {
+  width: 60%; max-width: 60%; height: auto; max-height: 100%; object-fit: contain; display: block;
+  mix-blend-mode: multiply; user-select: none;
+}
+.pst-word {
+  font-size: clamp(54px, 9vh, 84px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; color: var(--ink);
+}
+
+.pst-row-meta { display: flex; align-items: center; justify-content: flex-start; min-height: 28px; }
+.pst-idx { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; }
+.pst-idx b { opacity: 0.4; font-weight: 800; }
+
+.pst-in h3 { margin: 4px 0 0; font-size: clamp(26px, 3.2vh, 32px); line-height: 1; font-weight: 800; letter-spacing: -0.035em; }
+.pst-cap { font-size: 11.5px; font-weight: 700; color: var(--accent); line-height: 1.3; }
+.pst-in p {
+  margin: 2px 0 6px; font-size: 12px; line-height: 1.5; color: rgba(28, 20, 16, 0.66);
+  display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.pst-btn {
+  align-self: flex-start; margin-top: auto; display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 999px; background: var(--ink); color: #fff; text-decoration: none;
+  font-size: 12.5px; font-weight: 700; transition: background 0.3s ease;
+}
+.pst-btn i { font-style: normal; display: inline-block; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.pst-btn:hover { background: var(--accent); }
+.pst-card.is-front:hover .pst-btn i, .pst-btn:hover i, .pst-btn:focus-visible i { transform: translate(3px, -3px); }
+.pst-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+
+@media (max-width: 899px) {
+  .pst-head p { display: none; }
+  .pst-row-a .pst-mtrack span { font-size: clamp(150px, 32vh, 300px); }
+}
+
+/* ---------- reduced motion: no pin, vertical list, static marquee ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .pst { height: auto; min-height: 0; padding: 120px 20px 72px; }
+  .pst-top { position: absolute; }
+  .pst-count { display: none; }
+  .pst-marq { top: 90px; bottom: auto; height: 40vh; inset: 90px 0 auto 0; }
+  .pst-row-a { top: 0; transform: none; }
+  .pst-row-b { display: none; }
+  .pst-stage { position: relative; left: auto; top: auto; transform: none; width: auto; height: auto; margin: 40vh auto 0; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+  .pst-glow { display: none; }
+  .pst-card { position: relative; inset: auto; width: min(380px, 100%); height: 480px; pointer-events: auto; }
+}

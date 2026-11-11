@@ -1,0 +1,63 @@
+.mn { position: fixed; inset: 0; z-index: 1000; visibility: hidden; font-family: var(--font, 'Plus Jakarta Sans', 'Segoe UI', sans-serif); color: #eceae6; }
+.mn-edge, .mn-panel { position: absolute; inset: 0; clip-path: inset(0% 0% 100% 0%); }
+.mn-edge { background: #5ca1da; }
+.mn-panel {
+  background: #14100d; display: flex; flex-direction: column; overflow: hidden;
+  padding: 0 clamp(22px, 3.4vw, 48px); padding-top: 22px; padding-bottom: clamp(18px, 3vh, 32px); box-sizing: border-box;
+}
+@media (min-width: 1440px) { .mn-panel { padding-top: 28px; } }
+
+.mn-top { display: flex; align-items: center; justify-content: space-between; flex: none; }
+.mn-logo img { display: block; height: 28px; width: auto; }
+@media (min-width: 1440px) { .mn-logo img { height: 34px; } }
+.mn-x {
+  position: relative; width: 44px; height: 44px; padding: 0; border-radius: 999px; cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.4); background: rgba(255, 255, 255, 0.08); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  transition: background 0.3s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mn-x i { position: absolute; left: 13px; width: 18px; height: 1.6px; border-radius: 2px; background: #fff; transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.25s, opacity 0.25s ease 0.2s; }
+.mn-x i:nth-child(1) { top: 14.5px; }
+.mn-x i:nth-child(2) { top: 20.7px; }
+.mn-x i:nth-child(3) { top: 26.9px; }
+.mn[data-open='true'] .mn-x i:nth-child(1) { transform: translateY(6.2px) rotate(45deg); }
+.mn[data-open='true'] .mn-x i:nth-child(2) { opacity: 0; }
+.mn[data-open='true'] .mn-x i:nth-child(3) { transform: translateY(-6.2px) rotate(-45deg); }
+@media (hover: hover), (pointer: fine) { .mn-x:hover { background: rgba(255, 255, 255, 0.18); transform: rotate(90deg); } }
+.mn-x:focus-visible, .mn-link:focus-visible { outline: 2px solid #f26531; outline-offset: 4px; }
+
+.mn-main { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 40px; padding: clamp(8px, 2vh, 24px) 0; }
+.mn-eyebrow { display: flex; gap: 14px; margin-bottom: clamp(10px, 2vh, 22px); font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(236, 234, 230, 0.5); }
+.mn-nav ul { list-style: none; margin: 0; padding: 0; }
+.mn-link {
+  position: relative; display: flex; align-items: baseline; gap: clamp(14px, 2vw, 28px); width: max-content; max-width: 100%; color: #eceae6; text-decoration: none;
+  font-size: clamp(40px, min(11vw, 10.4vh), 104px); line-height: 1.04; font-weight: 600; letter-spacing: -0.045em;
+  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mn-link small { flex: none; width: 2.2em; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; color: rgba(236, 234, 230, 0.4); transform: translateY(-0.2em); transition: color 0.3s ease; }
+.mn-line { display: block; overflow: hidden; padding: 0.04em 0.06em 0.12em 0; margin-bottom: -0.12em; }
+.mn-line > span { display: inline-block; }
+.mn-arrow { align-self: center; flex: none; color: #f26531; opacity: 0; transform: translateX(-14px); transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+@media (hover: hover), (pointer: fine) {
+  .mn-nav ul:hover .mn-link:not(:hover) { opacity: 0.3; }
+  .mn-link:hover { transform: translateX(14px); }
+  .mn-link:hover small { color: #f26531; }
+  .mn-link:hover .mn-arrow { opacity: 1; transform: none; }
+}
+.mn-link:focus-visible small { color: #f26531; }
+.mn-link:focus-visible .mn-arrow { opacity: 1; transform: none; }
+
+.mn-card { margin: 0; width: clamp(260px, 24vw, 360px); }
+.mn-card-img {
+  height: clamp(220px, 40vh, 420px); border-radius: 24px; background: #1c1410 url('/products/fluid-2.jpg') center / cover no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+.mn-card figcaption { margin-top: 16px; max-width: 28ch; font-size: 15px; line-height: 1.5; color: rgba(236, 234, 230, 0.6); }
+
+@media (max-width: 899px) {
+  .mn-main { grid-template-columns: 1fr; align-content: center; }
+  .mn-card { display: none; }
+  .mn-link small { width: 1.8em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mn-x, .mn-x i, .mn-link, .mn-arrow { transition: none; }
+}

@@ -1,0 +1,26 @@
+.what-we-do { --wt-blue: #5ca1da; }
+.wt-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: clamp(32px, 6vh, 72px); }
+.wt-label { display: flex; align-items: center; gap: 14px; padding-top: 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(28, 20, 16, 0.6); }
+.wt-rule { display: block; width: clamp(40px, 4vw, 64px); height: 1.5px; background: var(--wt-blue); }
+
+.wt-title { margin: 0; font-size: clamp(44px, 6.2vw, 96px); font-weight: 600; line-height: 0.98; letter-spacing: -0.045em; color: #1c1410; }
+.wt-row { display: block; }
+.wt-w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.04em 0.05em 0.14em; margin: -0.04em -0.05em -0.14em; }
+.wt-w > span { display: inline-block; }
+.wt-pill {
+  width: 1.4em; height: 0.8em; margin: 0 0.08em 0 0.1em; border-radius: 999px; vertical-align: -0.02em;
+  background: #1c1410 url('/products/fluid-3.jpg') center / cover no-repeat;
+}
+.wt-soft { margin-top: 0.1em; padding-left: 8vw; font-size: 0.82em; font-weight: 400; font-style: italic; letter-spacing: -0.04em; color: rgba(28, 20, 16, 0.4); }
+.wt-soft .wt-w { padding-right: 0.2em; margin-right: -0.2em; }
+
+.wt-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; margin: clamp(44px, 8vh, 96px) 0 clamp(40px, 7vh, 100px); padding-top: 22px; border-top: 1px solid rgba(28, 20, 16, 0.16); }
+.wt-cap { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(28, 20, 16, 0.5); padding-top: 4px; }
+.wt-copy { margin: 0; max-width: 46ch; font-size: 17px; font-weight: 500; line-height: 1.6; color: rgba(28, 20, 16, 0.65); }
+
+@media (max-width: 700px) {
+  .wt-soft { padding-left: 0; }
+  .wt-pill { width: 1.05em; height: 0.6em; }
+  .wt-bottom { grid-template-columns: 1fr; gap: 14px; }
+  .wt-copy { font-size: 16px; }
+}
